@@ -107,6 +107,8 @@ class ViewController: UIViewController {
       } catch {
       // contents could not be loaded
         print ("......functions file not found \(filepath)")
+        
+        
     }
     
     

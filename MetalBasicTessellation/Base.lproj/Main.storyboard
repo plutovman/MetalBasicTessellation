@@ -24,8 +24,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhp-mV-Urx">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="567"/>
                                 <subviews>
-                                    <mtkView contentMode="scaleToFill" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="TnH-ha-rnu">
-                                        <rect key="frame" x="-0.5" y="-0.5" width="375" height="567"/>
+                                    <mtkView contentMode="scaleToFill" misplaced="YES" colorPixelFormat="BGRA8Unorm" depthStencilPixelFormat="Depth32Float" translatesAutoresizingMaskIntoConstraints="NO" id="TnH-ha-rnu">
+                                        <rect key="frame" x="-1" y="-1" width="375" height="553"/>
                                     </mtkView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

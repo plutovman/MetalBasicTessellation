@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7D13B5DC1EC8DEB200B7CE50 /* TessellationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D13B5DB1EC8DEB200B7CE50 /* TessellationPipeline.swift */; };
 		E718DD581EC41E6F00D3A4FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */; };
 		E718DD5A1EC41E6F00D3A4FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD591EC41E6F00D3A4FF /* ViewController.swift */; };
 		E718DD5D1EC41E6F00D3A4FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E718DD5B1EC41E6F00D3A4FF /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7D13B5DB1EC8DEB200B7CE50 /* TessellationPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TessellationPipeline.swift; sourceTree = "<group>"; };
 		E718DD541EC41E6F00D3A4FF /* MetalBasicTessellation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalBasicTessellation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E718DD591EC41E6F00D3A4FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				E718DD881EC4416200D3A4FF /* TessellationFunctions.metal */,
 				E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */,
 				E718DD591EC41E6F00D3A4FF /* ViewController.swift */,
+				7D13B5DB1EC8DEB200B7CE50 /* TessellationPipeline.swift */,
 				E718DD5B1EC41E6F00D3A4FF /* Main.storyboard */,
 				E718DD5E1EC41E6F00D3A4FF /* Assets.xcassets */,
 				E718DD601EC41E6F00D3A4FF /* LaunchScreen.storyboard */,
@@ -269,6 +272,7 @@
 			files = (
 				E718DD5A1EC41E6F00D3A4FF /* ViewController.swift in Sources */,
 				E718DD581EC41E6F00D3A4FF /* AppDelegate.swift in Sources */,
+				7D13B5DC1EC8DEB200B7CE50 /* TessellationPipeline.swift in Sources */,
 				E718DD891EC4416200D3A4FF /* TessellationFunctions.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

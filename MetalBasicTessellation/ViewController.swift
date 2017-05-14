@@ -42,7 +42,7 @@ class ViewController: UIViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    
+    /*
     if let window = view.window {
       let scale = window.screen.nativeScale // (2 for iPhone 5s, 6 and iPads;  3 for iPhone 6 Plus)
       let layerSize = view.bounds.size
@@ -50,13 +50,17 @@ class ViewController: UIViewController {
       view.contentScaleFactor = scale
       //metalLayer.frame = CGRect(x: 0, y: 0, width: layerSize.width, height: layerSize.height)
       //metalLayer.drawableSize = CGSize(width: layerSize.width * scale, height: layerSize.height * scale)
-    }
+    } */
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
     device = MTLCreateSystemDefaultDevice() // returns a reference to the default MTLDevice
+    
+    //device.supportsFeatureSet(MTLFeatureSet_iOS_GPUFamily3_v2)
+    
+    
     
     // set up layer to display metal content
     //metalLayer = CAMetalLayer()          // initialize metalLayer
@@ -95,6 +99,7 @@ class ViewController: UIViewController {
     //////
     */
     
+    /*
     let bundlepath = Bundle.main.bundlePath
     let filepath = bundlepath.appendingFormat("/TessellationFunctions.metal")
     do {
@@ -109,15 +114,17 @@ class ViewController: UIViewController {
         print ("......functions file not found \(filepath)")
         
         
-    }
+    } */
+    
+    // access precompiled shaders included in project through device.newDefaultLibrary()!
+    let defaultLibrary = device.newDefaultLibrary()! // MTLLibrary object with precompiled shaders
     
     
-    
-    let fragmentProgram = library?.makeFunction(name: "tessellation_fragment")
-    let vertexProgram = library?.makeFunction(name: "tessellation_vertex_triangle")
+    let fragmentProgram = defaultLibrary.makeFunction(name: "tessellation_fragment")
+    let vertexProgram = defaultLibrary.makeFunction(name: "tessellation_vertex_triangle")
     
     // Setup Compute Pipeline
-    let kernelFunction = library?.makeFunction(name: "tessellation_kernel_triangle")
+    let kernelFunction = defaultLibrary.makeFunction(name: "tessellation_kernel_triangle")
     var computePipeline: MTLComputePipelineState?
     do {
       computePipeline = try device.makeComputePipelineState(function: kernelFunction!)
@@ -137,9 +144,9 @@ class ViewController: UIViewController {
     // Setup Render Pipeline
     let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
     renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
-    //renderPipelineDescriptor.fragmentFunction = library?.makeFunction(name: "tessellation_fragment")
+    //renderPipelineDescriptor.fragmentFunction = defaultLibrary.makeFunction(name: "tessellation_fragment")
     renderPipelineDescriptor.fragmentFunction = fragmentProgram
-    //renderPipelineDescriptor.vertexFunction = library?.makeFunction(name: "tessellation_vertex_triangle")
+    //renderPipelineDescriptor.vertexFunction = defaultLibrary.makeFunction(name: "tessellation_vertex_triangle")
     renderPipelineDescriptor.vertexFunction = vertexProgram
     
     //renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm // normalized 8 bit rgba

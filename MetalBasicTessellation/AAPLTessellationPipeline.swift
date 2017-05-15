@@ -58,7 +58,7 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
     
     // Initialize properties
     isWireframe = true
-    patchType = .triangle
+    patchType = .quad
     edgeFactor = [2.0]
     insideFactor = [2.0]
     // Setup Metal
@@ -237,13 +237,13 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
     let controlPointPositionsTriangle: [Float] = [-0.8, -0.8, 0.0, 1.0,             // lower-left
       0.0, 0.8, 0.0, 1.0,             // upper-middle
       0.8, -0.8, 0.0, 1.0]
-    controlPointsBufferTriangle = device.makeBuffer(bytes: controlPointPositionsTriangle, length: MemoryLayout<Float>.size, options: controlPointsBufferOptions)
+    controlPointsBufferTriangle = device.makeBuffer(bytes: controlPointPositionsTriangle, length: 12 * MemoryLayout<Float>.size, options: controlPointsBufferOptions)
     controlPointsBufferTriangle?.label = "Control Points Triangle"
     let controlPointPositionsQuad: [Float] = [-0.8, 0.8, 0.0, 1.0,             // upper-left
       0.8, 0.8, 0.0, 1.0,             // upper-right
       0.8, -0.8, 0.0, 1.0,             // lower-right
       -0.8, -0.8, 0.0, 1.0]
-    controlPointsBufferQuad = device.makeBuffer(bytes: controlPointPositionsQuad, length: MemoryLayout<Float>.size, options: controlPointsBufferOptions)
+    controlPointsBufferQuad = device.makeBuffer(bytes: controlPointPositionsQuad, length: 16 * MemoryLayout<Float>.size, options: controlPointsBufferOptions)
     controlPointsBufferQuad?.label = "Control Points Quad"
     // More sophisticated tessellation passes might have additional buffers for per-patch user data
   }

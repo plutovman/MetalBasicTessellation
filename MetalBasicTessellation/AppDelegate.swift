@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  MetalBasicTessellation
 //
-//  Created by vladimir sierra on 5/10/17.
-//  Copyright © 2017 vladimir sierra. All rights reserved.
+//  Created by vs on 5/10/17.
+//  Copyright © 2017 . All rights reserved.
 //
 
 import UIKit

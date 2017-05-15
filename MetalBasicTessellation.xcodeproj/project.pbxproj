@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7D13B5DC1EC8DEB200B7CE50 /* TessellationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D13B5DB1EC8DEB200B7CE50 /* TessellationPipeline.swift */; };
+		7D13B5DC1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D13B5DB1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift */; };
 		E718DD581EC41E6F00D3A4FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */; };
-		E718DD5A1EC41E6F00D3A4FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD591EC41E6F00D3A4FF /* ViewController.swift */; };
+		E718DD5A1EC41E6F00D3A4FF /* ViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD591EC41E6F00D3A4FF /* ViewControllerOld.swift */; };
 		E718DD5D1EC41E6F00D3A4FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E718DD5B1EC41E6F00D3A4FF /* Main.storyboard */; };
 		E718DD5F1EC41E6F00D3A4FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E718DD5E1EC41E6F00D3A4FF /* Assets.xcassets */; };
 		E718DD621EC41E6F00D3A4FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E718DD601EC41E6F00D3A4FF /* LaunchScreen.storyboard */; };
 		E718DD6D1EC41E6F00D3A4FF /* MetalBasicTessellationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD6C1EC41E6F00D3A4FF /* MetalBasicTessellationTests.swift */; };
 		E718DD781EC41E6F00D3A4FF /* MetalBasicTessellationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD771EC41E6F00D3A4FF /* MetalBasicTessellationUITests.swift */; };
 		E718DD891EC4416200D3A4FF /* TessellationFunctions.metal in Sources */ = {isa = PBXBuildFile; fileRef = E718DD881EC4416200D3A4FF /* TessellationFunctions.metal */; };
+		E785A1AD1EC96EE200AC287B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E785A1AC1EC96EE200AC287B /* ViewController.swift */; };
 		E7BA2F7F1EC458C100DD5078 /* TessellationFunctions.metal in Resources */ = {isa = PBXBuildFile; fileRef = E718DD881EC4416200D3A4FF /* TessellationFunctions.metal */; };
 /* End PBXBuildFile section */
 
@@ -37,10 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7D13B5DB1EC8DEB200B7CE50 /* TessellationPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TessellationPipeline.swift; sourceTree = "<group>"; };
+		7D13B5DB1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPLTessellationPipeline.swift; sourceTree = "<group>"; };
 		E718DD541EC41E6F00D3A4FF /* MetalBasicTessellation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalBasicTessellation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E718DD591EC41E6F00D3A4FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E718DD591EC41E6F00D3A4FF /* ViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOld.swift; sourceTree = "<group>"; };
 		E718DD5C1EC41E6F00D3A4FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E718DD5E1EC41E6F00D3A4FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E718DD611EC41E6F00D3A4FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 		E718DD771EC41E6F00D3A4FF /* MetalBasicTessellationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalBasicTessellationUITests.swift; sourceTree = "<group>"; };
 		E718DD791EC41E6F00D3A4FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E718DD881EC4416200D3A4FF /* TessellationFunctions.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = TessellationFunctions.metal; sourceTree = "<group>"; };
+		E785A1AC1EC96EE200AC287B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +106,9 @@
 			children = (
 				E718DD881EC4416200D3A4FF /* TessellationFunctions.metal */,
 				E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */,
-				E718DD591EC41E6F00D3A4FF /* ViewController.swift */,
-				7D13B5DB1EC8DEB200B7CE50 /* TessellationPipeline.swift */,
+				E718DD591EC41E6F00D3A4FF /* ViewControllerOld.swift */,
+				E785A1AC1EC96EE200AC287B /* ViewController.swift */,
+				7D13B5DB1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift */,
 				E718DD5B1EC41E6F00D3A4FF /* Main.storyboard */,
 				E718DD5E1EC41E6F00D3A4FF /* Assets.xcassets */,
 				E718DD601EC41E6F00D3A4FF /* LaunchScreen.storyboard */,
@@ -270,9 +273,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E718DD5A1EC41E6F00D3A4FF /* ViewController.swift in Sources */,
+				E785A1AD1EC96EE200AC287B /* ViewController.swift in Sources */,
+				E718DD5A1EC41E6F00D3A4FF /* ViewControllerOld.swift in Sources */,
 				E718DD581EC41E6F00D3A4FF /* AppDelegate.swift in Sources */,
-				7D13B5DC1EC8DEB200B7CE50 /* TessellationPipeline.swift in Sources */,
+				7D13B5DC1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift in Sources */,
 				E718DD891EC4416200D3A4FF /* TessellationFunctions.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +433,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 75XKR5J25D;
 				INFOPLIST_FILE = MetalBasicTessellation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkforward.MetalBasicTessellation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -442,6 +447,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 75XKR5J25D;
 				INFOPLIST_FILE = MetalBasicTessellation/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thinkforward.MetalBasicTessellation;
 				PRODUCT_NAME = "$(TARGET_NAME)";

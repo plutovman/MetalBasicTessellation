@@ -108,7 +108,15 @@ vertex FunctionOutIn tessellation_vertex_quad(PatchIn patchIn [[stage_in]],
 #pragma mark Fragment Function
 
 // Common fragment function
+
 fragment half4 tessellation_fragment(FunctionOutIn fragmentIn [[stage_in]])
 {
   return fragmentIn.color;
 }
+
+// interpolated fragment function (does not work)
+/*
+fragment half4 tessellation_fragment(FunctionOutIn interpolated [[stage_in]]) {  // All fragment shaders must begin with the keyword fragment. The function must return (at least) the final color of the fragment
+  return half4(interpolated.color[0], interpolated.color[1], interpolated.color[2], interpolated.color[3]); // half4 is more efficient than float4.  here we return interpolated color between vertices
+  //return half4(1.0);              // half4 is more efficient than float4.  here we return a white fragment
+} */

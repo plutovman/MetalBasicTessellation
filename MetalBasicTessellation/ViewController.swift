@@ -11,6 +11,32 @@ import MetalKit
 class ViewController: UIViewController {
   
   @IBOutlet weak var mtkView: MTKView!
+  @IBOutlet weak var edgeLabel: UILabel!
+  @IBOutlet weak var insideLabel: UILabel!
+  
+  
+  @IBAction func patchTypeSegmentedControlDidChange(_ sender: UISegmentedControl) {
+    
+    tessellationPipeline?.patchType = (sender.selectedSegmentIndex == 0) ? .triangle : .quad
+    mtkView.draw()
+  }
+  
+  @IBAction func wireframeDidChange(_ sender: UISwitch) {
+    tessellationPipeline?.isWireframe = sender.isOn
+    mtkView.draw()
+  }
+  
+  @IBAction func edgeSliderDidChange(_ sender: UISlider) {
+    edgeLabel.text = String(format: "%.1f", sender.value)
+    tessellationPipeline?.edgeFactor = [sender.value]
+    mtkView.draw()
+  }
+  
+  @IBAction func insideSliderDidChange(_ sender: UISlider) {
+    insideLabel.text = String(format: "%.1f", sender.value)
+    tessellationPipeline?.insideFactor = [sender.value]
+    mtkView.draw()
+  }
   
   var tessellationPipeline: AAPLTessellationPipeline?
 
@@ -18,7 +44,8 @@ class ViewController: UIViewController {
       super.viewDidLoad()
       mtkView.isPaused = true
       mtkView.enableSetNeedsDisplay = true
-      mtkView.sampleCount = 1
+      mtkView.sampleCount = 1 // no antialiasing
+      //mtkView.sampleCount = 4 //antialiasing
       mtkView.depthStencilPixelFormat = .invalid
     }
   

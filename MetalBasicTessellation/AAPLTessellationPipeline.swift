@@ -12,8 +12,6 @@
  The control points buffer is populated with static position data.
  */
 
-// a comment
-
 
 import Metal
 import MetalKit
@@ -54,14 +52,14 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
   init? (mtkView view: MTKView) {
     
     device = MTLCreateSystemDefaultDevice()!
-    commandQueue = device.makeCommandQueue()
-    library = device.newDefaultLibrary()!
+    commandQueue = device.makeCommandQueue() // Create a new command queue
+    library = device.newDefaultLibrary()! // Load the default library
     
     super.init()
     
     // Initialize properties
     isWireframe = true
-    patchType = .quad
+    patchType = .triangle
     edgeFactor = [2.0]
     insideFactor = [2.0]
     // Setup Metal
@@ -92,13 +90,7 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
   
   // MARK: Setup methods
   func didSetupMetal() -> Bool {
-    // Use the default device
-    //device = MTLCreateSystemDefaultDevice()
-    /*
-    if device == nil {
-      print("Metal is not supported on this device")
-      return false
-    }*/
+
     #if TARGET_OS_IOS
       if !device?.supportsFeatureSet(MTLFeatureSet_iOS_GPUFamily3_v2) {
         print("Tessellation is not supported on this device")
@@ -111,28 +103,20 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
       }
     #endif
     
-    // Create a new command queue
-    //commandQueue = device.makeCommandQueue()
-    
-    // Load the default library
-    //library = device.newDefaultLibrary()
     return true
   }
   
   func didSetupComputePipelines() -> Bool {
-    //var computePipelineError: Error?
     // Create compute pipeline for triangle-based tessellation
     let kernelFunctionTriangle = library.makeFunction(name: "tessellation_kernel_triangle")
-    //print ("...kernel triangle \(kernelFunctionTriangle)")
-    //computePipelineTriangle: MTLComputePipelineState?
+
     do {
       computePipelineTriangle = try device.makeComputePipelineState(function: kernelFunctionTriangle!)
     } catch let error as NSError {
       print("compute pipeline error: " + error.description)
     }
-    
+    // Create compute pipeline for quad-based tessellation
     let kernelFunctionQuad = library.makeFunction(name: "tessellation_kernel_quad")
-    //var computePipelineQuad: MTLComputePipelineState?
     do {
       computePipelineQuad = try device.makeComputePipelineState(function: kernelFunctionQuad!)
     } catch let error as NSError {
@@ -148,7 +132,7 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
     let vertexProgramTriangle = library.makeFunction(name: "tessellation_vertex_triangle")
     let vertexProgramQuad = library.makeFunction(name: "tessellation_vertex_quad")
     let fragmentProgram = library.makeFunction(name: "tessellation_fragment")
-    //var renderPipelineError: Error? = nil
+
     // Create a reusable vertex descriptor for the control point data
     // This describes the inputs to the post-tessellation vertex function, declared with the 'stage_in' qualifier
     let vertexDescriptor = MTLVertexDescriptor()
@@ -158,20 +142,15 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
     vertexDescriptor.layouts[0].stepFunction = .perPatchControlPoint
     vertexDescriptor.layouts[0].stepRate = 1
     vertexDescriptor.layouts[0].stride = 4 * MemoryLayout<Float>.size
+    
     // Create a reusable render pipeline descriptor
     let renderPipelineDescriptor = MTLRenderPipelineDescriptor()
+    
     // Configure common render properties
     renderPipelineDescriptor.vertexDescriptor = vertexDescriptor
     renderPipelineDescriptor.sampleCount = view.sampleCount
     renderPipelineDescriptor.colorAttachments[0].pixelFormat = view.colorPixelFormat
-    
-    
-    //renderPipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
     renderPipelineDescriptor.fragmentFunction = fragmentProgram
-    
-    
-    
-    
     
     // Configure common tessellation properties
     renderPipelineDescriptor.isTessellationFactorScaleEnabled = false
@@ -181,7 +160,7 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
     renderPipelineDescriptor.tessellationOutputWindingOrder = .clockwise
     renderPipelineDescriptor.tessellationPartitionMode = .fractionalEven
     
-    /*
+    
     #if TARGET_OS_IOS
       // In iOS, the maximum tessellation factor is 16
       renderPipelineDescriptor.maxTessellationFactor = 16
@@ -189,12 +168,8 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
       // In OS X, the maximum tessellation factor is 64
       renderPipelineDescriptor.maxTessellationFactor = 64
     #endif
-    */
-    
-    renderPipelineDescriptor.maxTessellationFactor = 16
-    
+
     // Create render pipeline for triangle-based tessellation
-    //renderPipelineDescriptor.vertexFunction = library?.newFunction(withName: "tessellation_vertex_triangle")
     renderPipelineDescriptor.vertexFunction = vertexProgramTriangle
     
     // Compile renderPipeline for triangle-based tessellation
@@ -204,7 +179,7 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
       print("render pipeline error: " + error.description)
     }
     
-    
+    // Create render pipeline for quad-based tessellation
     renderPipelineDescriptor.vertexFunction = vertexProgramQuad
     
     // Compile renderPipeline for quad-based tessellation
@@ -292,10 +267,9 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
       renderPassDescriptor?.colorAttachments[0].clearColor = MTLClearColor(red: 0.0, green: 104.0/255.0, blue: 5.0/255.0, alpha: 1.0) // set clear color to green
       //renderPassDescriptor?.colorAttachments[0].storeAction = .multisampleResolve
       //renderPassDescriptor?.colorAttachments[0].storeAction = .unknown
-      */
-      
-      renderPassDescriptor?.colorAttachments[0].texture = view.currentDrawable?.texture
+      //renderPassDescriptor?.colorAttachments[0].texture = view.currentDrawable?.texture
       //renderPassDescriptor?.colorAttachments[0].texture = view.multisampleColorTexture
+ */
       
       // Create a render command encoder
       let renderCommandEncoder: MTLRenderCommandEncoder? = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor!)
@@ -319,11 +293,12 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
       // Encode tessellation-specific commands
       renderCommandEncoder?.setTessellationFactorBuffer(tessellationFactorsBuffer, offset: 0, instanceStride: 0)
       let patchControlPoints: Int = (patchType == .triangle) ? 3 : 4
+      //renderCommandEncoder.drawPatches(numberOfPatchControlPoints: 3, patchStart: 0, patchCount: 1, patchIndexBuffer: nil, patchIndexBufferOffset: 0, instanceCount: 1, baseInstance: 0)
       renderCommandEncoder?.drawPatches(numberOfPatchControlPoints: patchControlPoints, patchStart: 0, patchCount: 1, patchIndexBuffer: nil, patchIndexBufferOffset: 0, instanceCount: 1, baseInstance: 0)
       
       
       
-      //renderCommandEncoder.drawPatches(numberOfPatchControlPoints: 3, patchStart: 0, patchCount: 1, patchIndexBuffer: nil, patchIndexBufferOffset: 0, instanceCount: 1, baseInstance: 0)
+      
       // All render commands have been encoded
       renderCommandEncoder?.popDebugGroup()
       renderCommandEncoder?.endEncoding()

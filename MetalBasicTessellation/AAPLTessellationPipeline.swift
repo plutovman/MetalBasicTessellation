@@ -217,12 +217,14 @@ class AAPLTessellationPipeline: NSObject, MTKViewDelegate {
       0.8, -0.8, 0.0, 1.0]
     controlPointsBufferTriangle = device.makeBuffer(bytes: controlPointPositionsTriangle, length: 12 * MemoryLayout<Float>.size, options: controlPointsBufferOptions)
     controlPointsBufferTriangle?.label = "Control Points Triangle"
+    
     let controlPointPositionsQuad: [Float] = [-0.8, 0.8, 0.0, 1.0,             // upper-left
       0.8, 0.8, 0.0, 1.0,             // upper-right
       0.8, -0.8, 0.0, 1.0,             // lower-right
       -0.8, -0.8, 0.0, 1.0]
     controlPointsBufferQuad = device.makeBuffer(bytes: controlPointPositionsQuad, length: 16 * MemoryLayout<Float>.size, options: controlPointsBufferOptions)
     controlPointsBufferQuad?.label = "Control Points Quad"
+    
     // More sophisticated tessellation passes might have additional buffers for per-patch user data
   }
   

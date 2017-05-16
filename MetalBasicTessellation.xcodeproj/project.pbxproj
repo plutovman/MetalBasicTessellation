@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		7D13B5DC1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D13B5DB1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift */; };
 		E718DD581EC41E6F00D3A4FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */; };
-		E718DD5A1EC41E6F00D3A4FF /* ViewControllerOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = E718DD591EC41E6F00D3A4FF /* ViewControllerOld.swift */; };
 		E718DD5D1EC41E6F00D3A4FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E718DD5B1EC41E6F00D3A4FF /* Main.storyboard */; };
 		E718DD5F1EC41E6F00D3A4FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E718DD5E1EC41E6F00D3A4FF /* Assets.xcassets */; };
 		E718DD621EC41E6F00D3A4FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E718DD601EC41E6F00D3A4FF /* LaunchScreen.storyboard */; };
@@ -41,7 +40,6 @@
 		7D13B5DB1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AAPLTessellationPipeline.swift; sourceTree = "<group>"; };
 		E718DD541EC41E6F00D3A4FF /* MetalBasicTessellation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalBasicTessellation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E718DD591EC41E6F00D3A4FF /* ViewControllerOld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOld.swift; sourceTree = "<group>"; };
 		E718DD5C1EC41E6F00D3A4FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E718DD5E1EC41E6F00D3A4FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E718DD611EC41E6F00D3A4FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			children = (
 				E718DD881EC4416200D3A4FF /* TessellationFunctions.metal */,
 				E718DD571EC41E6F00D3A4FF /* AppDelegate.swift */,
-				E718DD591EC41E6F00D3A4FF /* ViewControllerOld.swift */,
 				E785A1AC1EC96EE200AC287B /* ViewController.swift */,
 				7D13B5DB1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift */,
 				E718DD5B1EC41E6F00D3A4FF /* Main.storyboard */,
@@ -274,7 +271,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E785A1AD1EC96EE200AC287B /* ViewController.swift in Sources */,
-				E718DD5A1EC41E6F00D3A4FF /* ViewControllerOld.swift in Sources */,
 				E718DD581EC41E6F00D3A4FF /* AppDelegate.swift in Sources */,
 				7D13B5DC1EC8DEB200B7CE50 /* AAPLTessellationPipeline.swift in Sources */,
 				E718DD891EC4416200D3A4FF /* TessellationFunctions.metal in Sources */,
